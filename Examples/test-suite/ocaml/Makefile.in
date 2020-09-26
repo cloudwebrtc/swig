@@ -20,6 +20,7 @@ apply_strings \
 cpp_enum \
 default_constructor \
 director_binary_string \
+director_comparison_operators \
 director_enum \
 director_primitives \
 director_redefined \
@@ -33,6 +34,12 @@ smart_pointer_inherit \
 FAILING_C_TESTS = \
 enums \
 preproc_constants_c \
+
+CPP_TEST_CASES += \
+	inout \
+
+C_TEST_CASES += \
+	multivalue \
 
 ml_runme = $(SCRIPTPREFIX)$*$(SCRIPTSUFFIX)
 

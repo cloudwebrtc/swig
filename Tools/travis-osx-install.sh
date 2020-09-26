@@ -1,6 +1,11 @@
 #!/bin/bash
 
+# Install MacOS packages where the version has been overidden in .travis.yml
+
 set -e # exit on failure (same as -o errexit)
+
+# Disable 'brew cleanup', just wastes Travis job run time
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 sw_vers
 travis_retry brew update
@@ -20,11 +25,11 @@ case "$SWIGLANG" in
 	"lua")
 		travis_retry brew install lua
 		;;
+	"octave")
+		travis_retry Tools/brew-install octave
+		;;
 	"python")
 		WITHLANG=$SWIGLANG$PY3
-		if [[ "$PY3" ]]; then
-			travis_retry brew upgrade python
-		fi
 		;;
 esac
 
